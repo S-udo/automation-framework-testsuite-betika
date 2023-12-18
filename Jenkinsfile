@@ -37,18 +37,22 @@ pipeline {
         choice(
             name: 'TEST_ENVIRONMENT', 
             choices: [
-                'local'
+                'local',
+                'dev',
+                'qa',
+                'stage',
+                'prod',
             ], 
             description: 'Specify the test environment. Default will be local.'
         )
         choice(
             name: 'BROWSER', 
-            choices: ['chrome'], 
+            choices: ['electron', 'chrome', 'edge', 'firefox'], 
             description: 'Pick the web browser you want to use to run your scripts. Default will be electron.'
         )
         choice(
             name: 'BROWSER_MODE', 
-            choices: ['headless'], 
+            choices: ['headless', 'head'], 
             description: 'By default, Cypress will run tests headlessly.Passing --headed will force the browser to be shown.'
         )
         choice(
