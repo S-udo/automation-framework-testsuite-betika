@@ -11,9 +11,9 @@ pipeline {
     }*/
 
     //NoAnsi Color Plugin helps to avoid weird Jenkins console output and displays the console output in color format
-    options {
-        ansiColor('xterm')
-    }
+    // options {
+    //     ansiColor('xterm')
+    // }
    
    tools {
        //Use Node name configured in global tools configuration for Node Jenkins Plugin
