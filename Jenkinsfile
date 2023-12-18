@@ -78,9 +78,9 @@ pipeline {
                 /* git ([
                         branch: 'main',
                         changelog: true,
-                        credentialsId: 'itkhanz',
+                        credentialsId: 'S-udo',
                         poll: false,
-                        url: 'https://github.com/itkhanz/Cypress-Framework'
+                        url: 'https://github.com/S-udo/automation-framework-testsuite-betika'
                 ]) */
 
                 echo 'Code is checked out'
