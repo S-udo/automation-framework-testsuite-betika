@@ -12,7 +12,7 @@ pipeline {
 
     //NoAnsi Color Plugin helps to avoid weird Jenkins console output and displays the console output in color format
     options {
-        ansiColor('xterm')
+        ansiColor('disableConcurrentBuilds')
     }
    
    tools {
