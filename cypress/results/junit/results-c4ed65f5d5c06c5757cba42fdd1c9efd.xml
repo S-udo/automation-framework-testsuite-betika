@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="129.312" tests="4" failures="4">
+  <testsuite name="Root Suite" timestamp="2023-12-18T08:39:30" tests="0" file="cypress/e2e/tests/AddOddsToSlipTest.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="adding games and odds to bet slip" timestamp="2023-12-18T08:39:30" tests="4" time="129.221" failures="4">
+    <testcase name="adding games and odds to bet slip should add odds from multiple games types to a single bet slip" time="0.000" classname="should add odds from multiple games types to a single bet slip">
+      <failure message="Timed out retrying after 5000ms: Expected to find element: `:nth-child(10) &gt; .prebet-match__odd-market__container &gt; .prebet-match__odds__container &gt; .prebet-match__odds &gt; :nth-child(1)`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: Expected to find element: `:nth-child(10) > .prebet-match__odd-market__container > .prebet-match__odds__container > .prebet-match__odds > :nth-child(1)`, but never found it.
+    at get bOdd3Btn [as bOdd3Btn] (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:22:31)
+    at OddsSearchPage.addOddsToSlip (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:64:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/AddOddsToSlipTest.cy.js:23:13)]]></failure>
+    </testcase>
+    <testcase name="adding games and odds to bet slip should be able to share bet slip via social media platform" time="0.000" classname="should be able to share bet slip via social media platform">
+      <failure message="this.shareBtn is not a function" type="TypeError"><![CDATA[TypeError: this.shareBtn is not a function
+    at OddsSearchPage.shareBetSlip (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:72:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/AddOddsToSlipTest.cy.js:36:13)]]></failure>
+    </testcase>
+    <testcase name="adding games and odds to bet slip should validate the presence of selected games and odds in  the Bet Slip" time="0.000" classname="should validate the presence of selected games and odds in  the Bet Slip">
+      <failure message="Timed out retrying after 5000ms: Expected to find element: `:nth-child(10) &gt; .prebet-match__odd-market__container &gt; .prebet-match__odds__container &gt; .prebet-match__odds &gt; :nth-child(1)`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: Expected to find element: `:nth-child(10) > .prebet-match__odd-market__container > .prebet-match__odds__container > .prebet-match__odds > :nth-child(1)`, but never found it.
+    at get bOdd3Btn [as bOdd3Btn] (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:22:31)
+    at OddsSearchPage.addOddsToSlip (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:64:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/AddOddsToSlipTest.cy.js:57:13)]]></failure>
+    </testcase>
+    <testcase name="adding games and odds to bet slip should be able to place bet frrom the bet slip" time="0.000" classname="should be able to place bet frrom the bet slip">
+      <failure message="Timed out retrying after 5000ms: Expected to find element: `.betslip__details__button__place`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: Expected to find element: `.betslip__details__button__place`, but never found it.
+    at get placeBetBtn [as placeBetBtn] (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:25:34)
+    at OddsSearchPage.placeBetSlip (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:78:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/AddOddsToSlipTest.cy.js:81:17)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

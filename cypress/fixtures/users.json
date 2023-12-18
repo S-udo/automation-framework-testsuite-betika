@@ -1,0 +1,15 @@
+{
+  "validUser": {
+    "email": "0735638271",
+    "password": "2020"
+  },
+  "validUser1": {
+    "email": "254798295156",
+    "password": "1234"
+  },
+
+  "invalidUser": {
+    "email": "0798243445",
+    "password": "0000"
+  }
+}

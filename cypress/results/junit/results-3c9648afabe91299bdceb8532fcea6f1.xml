@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="80.493" tests="3" failures="2">
+  <testsuite name="Root Suite" timestamp="2023-12-18T03:59:13" tests="0" file="cypress/e2e/tests/AddOddsToSlipTest.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="adding products to cart" timestamp="2023-12-18T03:59:13" tests="3" time="80.470" failures="2">
+    <testcase name="adding products to cart should add odds from multiple games types to a single bet slip" time="34.883" classname="should add odds from multiple games types to a single bet slip">
+    </testcase>
+    <testcase name="adding products to cart should be able to share bet slip via social media platform" time="0.000" classname="should be able to share bet slip via social media platform">
+      <failure message="Timed out retrying after 5000ms: Expected to find element: `.share-betslip__open &gt; .button`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: Expected to find element: `.share-betslip__open > .button`, but never found it.
+    at OddsSearchPage.shareBetSlip (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:65:22)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/AddOddsToSlipTest.cy.js:39:13)]]></failure>
+    </testcase>
+    <testcase name="adding products to cart should validate the presence of selected games and odds in  the Bet Slip" time="0.000" classname="should validate the presence of selected games and odds in  the Bet Slip">
+      <failure message="Timed out retrying after 5000ms: expected [ Array(1) ] to include &apos;Final Payout&apos;" type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: expected [ Array(1) ] to include 'Final Payout'
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/AddOddsToSlipTest.cy.js:48:46)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

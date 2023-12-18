@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="89.626" tests="3" failures="2">
+  <testsuite name="Root Suite" timestamp="2023-12-18T04:53:00" tests="0" file="cypress/e2e/tests/AddOddsToSlipTest.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="adding products to cart" timestamp="2023-12-18T04:53:00" tests="3" time="89.581" failures="2">
+    <testcase name="adding products to cart should add odds from multiple games types to a single bet slip" time="0.000" classname="should add odds from multiple games types to a single bet slip">
+      <failure message="Timed out retrying after 5000ms: Expected to find element: `:nth-child(8) &gt; .prebet-match__odd-market__container &gt; .prebet-match__odds__container &gt; .prebet-match__odds &gt; :nth-child(1)`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: Expected to find element: `:nth-child(8) > .prebet-match__odd-market__container > .prebet-match__odds__container > .prebet-match__odds > :nth-child(1)`, but never found it.
+    at get odd1Btn [as odd1Btn] (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:8:30)
+    at OddsSearchPage.addOddsToSlip (webpack://cypress-frameworks-pom/./cypress/e2e/pages/OddsSearchPage.js:35:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/AddOddsToSlipTest.cy.js:23:13)]]></failure>
+    </testcase>
+    <testcase name="adding products to cart &quot;before each&quot; hook for &quot;should be able to share bet slip via social media platform&quot;" time="0.000" classname="&quot;before each&quot; hook for &quot;should be able to share bet slip via social media platform&quot;">
+      <failure message="Timed out after waiting `60000ms` for your remote page to load.
+
+Your page did not fire its `load` event within `60000ms`.
+
+You can try increasing the `pageLoadTimeout` value in `Users/mac/Downloads/Test-FrameWork-Tst/cypress.config.js` to wait longer.
+
+Browsers will not fire the `load` event until all stylesheets and scripts are done downloading.
+
+When this `load` event occurs, Cypress will continue running commands.
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `adding products to cart`" type="CypressError"><![CDATA[CypressError: Timed out after waiting `60000ms` for your remote page to load.
+
+Your page did not fire its `load` event within `60000ms`.
+
+You can try increasing the `pageLoadTimeout` value in `Users/mac/Downloads/Test-FrameWork-Tst/cypress.config.js` to wait longer.
+
+Browsers will not fire the `load` event until all stylesheets and scripts are done downloading.
+
+When this `load` event occurs, Cypress will continue running commands.
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `adding products to cart`
+    at timedOutWaitingForPageLoad (https://www.betika.com/__cypress/runner/cypress_runner.js:130001:64)
+    at <unknown> (https://www.betika.com/__cypress/runner/cypress_runner.js:130975:16)
+    at tryCatcher (https://www.betika.com/__cypress/runner/cypress_runner.js:1807:23)
+    at <unknown> (https://www.betika.com/__cypress/runner/cypress_runner.js:4186:41)
+    at tryCatcher (https://www.betika.com/__cypress/runner/cypress_runner.js:1807:23)
+    at Promise._settlePromiseFromHandler (https://www.betika.com/__cypress/runner/cypress_runner.js:1519:31)
+    at Promise._settlePromise (https://www.betika.com/__cypress/runner/cypress_runner.js:1576:18)
+    at Promise._settlePromise0 (https://www.betika.com/__cypress/runner/cypress_runner.js:1621:10)
+    at Promise._settlePromises (https://www.betika.com/__cypress/runner/cypress_runner.js:1697:18)
+    at _drainQueueStep (https://www.betika.com/__cypress/runner/cypress_runner.js:2407:12)
+    at _drainQueue (https://www.betika.com/__cypress/runner/cypress_runner.js:2400:9)
+    at Async._drainQueues (https://www.betika.com/__cypress/runner/cypress_runner.js:2416:5)
+    at Async.drainQueues (https://www.betika.com/__cypress/runner/cypress_runner.js:2286:14)
+From Your Spec Code:
+    at LoginPage.open (webpack://cypress-frameworks-pom/./cypress/e2e/pages/BasePage.js:10:18)
+    at LoginPage.open (webpack://cypress-frameworks-pom/./cypress/e2e/pages/LoginPage.js:16:21)
+    at LoginPage.loginWithUI (webpack://cypress-frameworks-pom/./cypress/e2e/pages/LoginPage.js:25:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/support/commands.js:34:18)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

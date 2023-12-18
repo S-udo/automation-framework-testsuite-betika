@@ -1,0 +1,910 @@
+{
+	"info": {
+		"_postman_id": "35acfa13-dd1c-43de-8a40-b875b2273d10",
+		"name": "AssessmentApiTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29129294"
+	},
+	"item": [
+		{
+			"name": "Register Users",
+			"item": [
+				{
+					"name": "Register-Successful",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Function to generate a random email address",
+									"function generateRandomEmail() {",
+									"    // Generate a random string of 10 characters",
+									"    const randomString = Math.random().toString(36).substring(2, 12);",
+									"    ",
+									"    // Append a domain to the random string",
+									"    const email = `user${randomString}@regres.in`;",
+									"",
+									"    return email;",
+									"}",
+									"",
+									"// Set the generated email as an environment variable",
+									"pm.environment.set('Email', generateRandomEmail());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify that Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Verify that Response is an object with id property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('id');",
+									"});",
+									"",
+									"pm.test(\"Verify that Response is an object with token property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('token');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    {\n    \"email\": \"charles.morris@reqres.in\",\n    \"password\": \"Charles\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}register",
+							"host": [
+								"{{baseURL}}register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register-Invalid Details",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Function to generate a random email address",
+									"function generateRandomEmail() {",
+									"    // Generate a random string of 10 characters",
+									"    const randomString = Math.random().toString(36).substring(2, 12);",
+									"    ",
+									"    // Append a domain to the random string",
+									"    const email = `user${randomString}@regres.in`;",
+									"",
+									"    return email;",
+									"}",
+									"",
+									"// Set the generated email as an environment variable",
+									"pm.environment.set('Email', generateRandomEmail());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with error property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    {\n    \"email\": \"charles.morris\",\n    \"password\": \"Charles\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}register",
+							"host": [
+								"{{baseURL}}register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register-without_password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Function to generate a random email address",
+									"function generateRandomEmail() {",
+									"    // Generate a random string of 10 characters",
+									"    const randomString = Math.random().toString(36).substring(2, 12);",
+									"    ",
+									"    // Append a domain to the random string",
+									"    const email = `user${randomString}@regres.in`;",
+									"",
+									"    return email;",
+									"}",
+									"",
+									"// Set the generated email as an environment variable",
+									"pm.environment.set('Email', generateRandomEmail());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with error property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('error');",
+									"});",
+									"",
+									"pm.test(\"Error property is a non-empty string\", function () {",
+									"    var error = pm.response.json().error;",
+									"    pm.expect(error).to.be.a('string').and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    {\n    \"email\": \"charles.morris@ingres.in\",\n    \"password\": \"\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}register",
+							"host": [
+								"{{baseURL}}register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register-invalidReqMethod",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Function to generate a random email address",
+									"function generateRandomEmail() {",
+									"    // Generate a random string of 10 characters",
+									"    const randomString = Math.random().toString(36).substring(2, 12);",
+									"    ",
+									"    // Append a domain to the random string",
+									"    const email = `user${randomString}@regres.in`;",
+									"",
+									"    return email;",
+									"}",
+									"",
+									"// Set the generated email as an environment variable",
+									"pm.environment.set('Email', generateRandomEmail());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "OPTIONS",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    {\n    \"email\": \"charles.morris\",\n    \"password\": \"Charles\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}register",
+							"host": [
+								"{{baseURL}}register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login User",
+			"item": [
+				{
+					"name": "login-valid user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with token property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('token');",
+									"});",
+									"",
+									"",
+									"// Test for response time",
+									"pm.test(\"Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"eve.holt@reqres.in\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}login",
+							"host": [
+								"{{baseURL}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login-noPassword",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with error property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"eve.holt@reqres.in\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}login",
+							"host": [
+								"{{baseURL}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login-Invalid User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with error property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('error');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"eve.holt\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}login",
+							"host": [
+								"{{baseURL}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login-noEmail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with error property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('error');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}login",
+							"host": [
+								"{{baseURL}}login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create User",
+			"item": [
+				{
+					"name": "create user-Valid",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Function to generate a random email address",
+									"function generateRandomEmail() {",
+									"    // Generate a random string of 10 characters",
+									"    const randomString = Math.random().toString(36).substring(2, 12);",
+									"    ",
+									"    // Append a domain to the random string",
+									"    const email2 = `user${randomString}@regres.in`;",
+									"",
+									"    return email2;",
+									"}",
+									"",
+									"// Set the generated email as an environment variable",
+									"pm.environment.set('Email2', generateRandomEmail());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with first_name, last_name, email, job, id, and createdAt properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('object').that.has.all.keys('first_name', 'last_name', 'email', 'job', 'id', 'createdAt');",
+									"});",
+									"",
+									"pm.test(\"Email property is a string in a valid format\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Quality\",\n    \"last_name\": \"Tester\",\n    \"email\": \"{{Email2}}\",\n    \"job\": \"QA Engr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}create",
+							"host": [
+								"{{baseURL}}create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user-empty RequestBody",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Function to generate a random email address",
+									"function generateRandomEmail() {",
+									"    // Generate a random string of 10 characters",
+									"    const randomString = Math.random().toString(36).substring(2, 12);",
+									"    ",
+									"    // Append a domain to the random string",
+									"    const email2 = `user${randomString}@regres.in`;",
+									"",
+									"    return email2;",
+									"}",
+									"",
+									"// Set the generated email as an environment variable",
+									"pm.environment.set('Email2', generateRandomEmail());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n//     \"first_name\": \"Quality\",\n//     \"last_name\": \"Tester\",\n//     \"email\": \"{{Email2}}\",\n//     \"job\": \"QA Engr\"\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}create",
+							"host": [
+								"{{baseURL}}create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user-invalid RequestMethod",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Function to generate a random email address",
+									"function generateRandomEmail() {",
+									"    // Generate a random string of 10 characters",
+									"    const randomString = Math.random().toString(36).substring(2, 12);",
+									"    ",
+									"    // Append a domain to the random string",
+									"    const email2 = `user${randomString}@regres.in`;",
+									"",
+									"    return email2;",
+									"}",
+									"",
+									"// Set the generated email as an environment variable",
+									"pm.environment.set('Email2', generateRandomEmail());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": 9000,\n    \"last_name\": \"Tester\",\n    \"email\": \"{{Email2}}\",\n    \"job\": \"QA Engr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}create",
+							"host": [
+								"{{baseURL}}create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update Users",
+			"item": [
+				{
+					"name": "update-user-valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with data and support properties\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.all.keys('data', 'support');",
+									"});",
+									"",
+									"pm.test(\"Data property contains required fields\", function () {",
+									"    var data = pm.response.json().data;",
+									"    pm.expect(data).to.be.an('object').that.has.all.keys('id', 'email', 'first_name', 'last_name', 'avatar');",
+									"});",
+									"",
+									"pm.test(\"Support property contains url and text fields\", function () {",
+									"    var support = pm.response.json().support;",
+									"    pm.expect(support).to.be.an('object').that.has.all.keys('url', 'text');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"email\": \"michael.lawson@reqres.in\",\n            \"first_name\": \"Michaelson\",\n            \"last_name\": \"Lawsoning\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}users/7",
+							"host": [
+								"{{baseURL}}users"
+							],
+							"path": [
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-user-invalid userID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Response is an object\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Response time is within acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"email\": \"michael.lawson@reqres.in\",\n            \"first_name\": \"Michaelson\",\n            \"last_name\": \"Lawsoning\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}users/7A",
+							"host": [
+								"{{baseURL}}users"
+							],
+							"path": [
+								"7A"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-user-valid userID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with email, first_name, last_name, and updatedAt properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('object').that.has.all.keys('email', 'first_name', 'last_name', 'updatedAt');",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"email\": \"michael.lawson@reqres.in\",\n            \"first_name\": \"Michaelson\",\n            \"last_name\": \"Lawsoning\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}users/7",
+							"host": [
+								"{{baseURL}}users"
+							],
+							"path": [
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Users",
+			"item": [
+				{
+					"name": "delete users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with data and support properties\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.all.keys('data', 'support');",
+									"});",
+									"",
+									"pm.test(\"Data property has id, email, first_name, last_name, and avatar properties\", function () {",
+									"    pm.expect(pm.response.json().data).to.be.an('object').that.has.all.keys('id', 'email', 'first_name', 'last_name', 'avatar');",
+									"});",
+									"",
+									"pm.test(\"Support property has url and text properties\", function () {",
+									"    pm.expect(pm.response.json().support).to.be.an('object').that.has.all.keys('url', 'text');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}users/2",
+							"host": [
+								"{{baseURL}}users"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete users-invalid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}users/2T",
+							"host": [
+								"{{baseURL}}users"
+							],
+							"path": [
+								"2T"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

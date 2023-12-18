@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="47.027" tests="3" failures="3">
+  <testsuite name="Root Suite" timestamp="2023-12-18T08:42:23" tests="0" file="cypress/e2e/tests/MyBetPageTest.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Rebet games from my bet account" timestamp="2023-12-18T08:42:23" tests="3" time="47.006" failures="3">
+    <testcase name="Rebet games from my bet account should be able to view all bet slips under my account" time="0.000" classname="should be able to view all bet slips under my account">
+      <failure message="Timed out retrying after 5000ms: Expected to find element: `.topnav__session__links__item[href=&quot;/en-ke/mybets&quot;]`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: Expected to find element: `.topnav__session__links__item[href="/en-ke/mybets"]`, but never found it.
+    at get myBetBtn [as myBetBtn] (webpack://cypress-frameworks-pom/./cypress/e2e/pages/MyBetPage.js:7:31)
+    at MyBetPage.viewBetOptions (webpack://cypress-frameworks-pom/./cypress/e2e/pages/MyBetPage.js:20:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/MyBetPageTest.cy.js:20:17)]]></failure>
+    </testcase>
+    <testcase name="Rebet games from my bet account should be able to check and perform cashout on bets" time="0.000" classname="should be able to check and perform cashout on bets">
+      <failure message="Timed out retrying after 5000ms: Expected to find element: `.betdetail-actions__cashout[css=&quot;1&quot;]`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: Expected to find element: `.betdetail-actions__cashout[css="1"]`, but never found it.
+    at get cashOutBtn [as cashOutBtn] (webpack://cypress-frameworks-pom/./cypress/e2e/pages/MyBetPage.js:11:77)
+    at MyBetPage.checkCashOut (webpack://cypress-frameworks-pom/./cypress/e2e/pages/MyBetPage.js:26:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/MyBetPageTest.cy.js:44:17)]]></failure>
+    </testcase>
+    <testcase name="Rebet games from my bet account should be able to perform rebet action on existing bet slip" time="0.000" classname="should be able to perform rebet action on existing bet slip">
+      <failure message="_MyBetPage.default.checkRebet.should is not a function" type="TypeError"><![CDATA[TypeError: _MyBetPage.default.checkRebet.should is not a function
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/MyBetPageTest.cy.js:70:17)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

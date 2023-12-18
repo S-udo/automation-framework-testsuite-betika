@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="35.430" tests="3" failures="1">
+  <testsuite name="Root Suite" timestamp="2023-12-18T08:41:44" tests="0" file="cypress/e2e/tests/LoginTest.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Success and Fail login flow" timestamp="2023-12-18T08:41:44" tests="3" time="35.397" failures="1">
+    <testcase name="Success and Fail login flow should login successfully with valid credentials" time="15.067" classname="should login successfully with valid credentials">
+    </testcase>
+    <testcase name="Success and Fail login flow should fail to login with invalid credentials" time="7.168" classname="should fail to login with invalid credentials">
+    </testcase>
+    <testcase name="Success and Fail login flow should perform login and logout" time="0.000" classname="should perform login and logout">
+      <failure message="Timed out retrying after 5000ms: Expected to find element: `[href=&quot;/en-ke/profile&quot;] &gt; .nav__item__label`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 5000ms: Expected to find element: `[href="/en-ke/profile"] > .nav__item__label`, but never found it.
+    at get myAccountDropdown [as myAccountDropdown] (webpack://cypress-frameworks-pom/./cypress/e2e/components/HeaderComponent.js:5:40)
+    at HeaderComponent.performLogout (webpack://cypress-frameworks-pom/./cypress/e2e/components/HeaderComponent.js:18:13)
+    at Context.eval (webpack://cypress-frameworks-pom/./cypress/e2e/tests/LoginTest.cy.js:42:24)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
