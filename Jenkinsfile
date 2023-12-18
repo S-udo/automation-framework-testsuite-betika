@@ -37,18 +37,18 @@ pipeline {
         choice(
             name: 'TEST_ENVIRONMENT', 
             choices: [
-                local:
+                'local'
             ], 
             description: 'Specify the test environment. Default will be local.'
         )
         choice(
             name: 'BROWSER', 
-            choices: ['electron', 'chrome', 'edge', 'firefox'], 
+            choices: ['chrome'], 
             description: 'Pick the web browser you want to use to run your scripts. Default will be electron.'
         )
         choice(
             name: 'BROWSER_MODE', 
-            choices: ['headless', 'headed'], 
+            choices: ['headless'], 
             description: 'By default, Cypress will run tests headlessly.Passing --headed will force the browser to be shown.'
         )
         choice(
@@ -57,7 +57,10 @@ pipeline {
                 '@regression', 
                 '@smoke', 
                 '@Login', 
-                '@bet', 
+                '@productData', 
+                '@Search', 
+                '@Wishlist', 
+                '@Cart'
             ], 
             description: 'Choose the test tag to filter your test scripts'
         )
@@ -75,9 +78,9 @@ pipeline {
                 /* git ([
                         branch: 'main',
                         changelog: true,
-                        credentialsId: 'S-udo',
+                        credentialsId: 'itkhanz',
                         poll: false,
-                        url: 'https://github.com/S-udo/cypress-automation-framework-betika'
+                        url: 'https://github.com/itkhanz/Cypress-Framework'
                 ]) */
 
                 echo 'Code is checked out'
@@ -97,7 +100,25 @@ pipeline {
                bat "npm run report:pre"
            }
        }
-            
+       
+       stage('Stage 4 - Running cypress e2e Tests') {
+            //For recording tests on Cypress Cloud Dashboard, you need to set these environment variables
+            environment {
+                CYPRESS_RECORD_KEY = credentials('cypress-framework-record-key')
+                CYPRESS_PROJECT_ID = credentials('cypress-framework-project-id')
+            }
+
+            steps {
+                //bat "SET NO_COLOR=$NO_COLOR"    //You may want to do this if ASCII characters or colors are not properly formatted in your CI.
+                script {
+                    if (params.TEST_SPEC == "cypress/e2e/tests/*.cy.js") {
+                        echo "Running all test scripts with Browser: ${params.BROWSER}, TAG: ${params.TAG}, Environment: ${params.TEST_ENVIRONMENT}"
+                        bat "npx cypress run --${params.BROWSER_MODE} --browser ${params.BROWSER} --env environmentName=${params.TEST_ENVIRONMENT},grepTags=${params.TAG} ${params.RECORD_TESTS}"
+                    } else {
+                        echo "Running script: ${params.TEST_SPEC} with Browser: ${params.BROWSER}, TAG: ${params.TAG}, Environment: ${params.TEST_ENVIRONMENT}"
+                        bat "npx cypress run --spec cypress/e2e/tests/${params.TEST_SPEC}.cy.js --${params.BROWSER_MODE} --browser ${params.BROWSER} --env environmentName=${params.TEST_ENVIRONMENT},grepTags=${params.TAG} ${params.RECORD_TESTS}"
+                    }
+                }
                 
             }
         }
